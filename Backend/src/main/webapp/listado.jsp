@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"  import="java.util.List, com.ipartek.formacion.modelos.*" %>
+    pageEncoding="UTF-8" import="com.ipartek.formacion.modelos.*, java.util.List" %>
 <%
 Object o = request.getAttribute("productos");
 
 System.out.println(o);
 
+@SuppressWarnings("unchecked")
 List<Producto> productos = (List<Producto>)o;
 %>
 <!DOCTYPE html>

@@ -24,6 +24,7 @@ public class AdminBorrarServlet extends HttpServlet {
 		
 		final String RUTA = getServletContext().getRealPath("/WEB-INF/sql/bases.db");
 		final String URL = "jdbc:sqlite:" + RUTA;
+		
 		final String SQL_DELETE = "DELETE FROM productos WHERE id=?";
 		
 		try {
