@@ -21,16 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class AdminFormularioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String SQL_INSERT = "INSERT INTO productos (nombre, precio, caducidad) VALUES (?,?,?)";
-	private static final String SQL_UPDATE = "UPDATE productos SET nombre=?,precio=?,caducidad=? WHERE id=?";
-
-	static {
-		try {
-			Class.forName("org.sqlite.JDBC");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+	
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -105,11 +96,9 @@ public class AdminFormularioServlet extends HttpServlet {
 	}
 
 	private void insertar(Producto producto) {
-		final String RUTA = getServletContext().getRealPath("/WEB-INF/sql/bases.db");
-		final String URL = "jdbc:sqlite:" + RUTA;
-		
-		try (Connection con = DriverManager.getConnection(URL);
-				PreparedStatement pst = con.prepareStatement(SQL_INSERT);) {
+				
+		try (Connection con = new DBHelper(getServletContext()).getConexion();
+				PreparedStatement pst = con.prepareStatement(DBHelper.SQL_INSERT);) {
 
 			pst.setString(1, producto.getNombre());
 			pst.setBigDecimal(2, producto.getPrecio());
@@ -123,11 +112,10 @@ public class AdminFormularioServlet extends HttpServlet {
 	}
 
 	private void modificar(Producto producto) {
-		final String RUTA = getServletContext().getRealPath("/WEB-INF/sql/bases.db");
-		final String URL = "jdbc:sqlite:" + RUTA;
 		
-		try (Connection con = DriverManager.getConnection(URL);
-				PreparedStatement pst = con.prepareStatement(SQL_UPDATE);) {
+		
+		try (Connection con = new DBHelper(getServletContext()).getConexion();
+				PreparedStatement pst = con.prepareStatement(DBHelper.SQL_UPDATE);) {
 
 			pst.setString(1, producto.getNombre());
 			pst.setBigDecimal(2, producto.getPrecio());

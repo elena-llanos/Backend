@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+
+
 	<nav class="navbar navbar-expand-sm bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Tienda</a>
