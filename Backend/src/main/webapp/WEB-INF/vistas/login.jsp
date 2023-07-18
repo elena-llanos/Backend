@@ -17,7 +17,7 @@
 				<input type="password" class="form-control" id="password"
 					name="password">
 				<button id="mostrar-password" class="btn btn-outline-secondary"
-					type="button" id="button-addon2">
+					type="button" >
 					<i class="bi bi-eye"></i>
 				</button>
 			</div>
