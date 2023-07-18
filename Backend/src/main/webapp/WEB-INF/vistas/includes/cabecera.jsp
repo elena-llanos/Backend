@@ -10,11 +10,16 @@
 <title>Tienda</title>
 <base href="${pageContext.request.contextPath}/">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 </head>
 <body>
 
 
-	<nav class="navbar navbar-expand-sm bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+	<nav
+		class="navbar navbar-expand-sm bg-dark border-bottom border-bottom-dark"
+		data-bs-theme="dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Tienda</a>
 			<button class="navbar-toggler" type="button"
@@ -33,14 +38,22 @@
 					<c:if test="${usuario == null }">
 						<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
 					</c:if>
-					
+
 					<c:if test="${usuario != null }">
 						<li class="nav-item"><a class="nav-link" href="admin/index">Administración</a></li>
 						<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
 					</c:if>
-					
+
 				</ul>
 			</div>
 		</div>
 	</nav>
+	<c:if test="${error != null}">
+		<div class="alert alert-danger alert-dismissible fade show"
+			role="alert">
+			${error}
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+	</c:if>
 	<main class="my-3 container">
